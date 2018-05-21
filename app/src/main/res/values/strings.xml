@@ -3,4 +3,5 @@
     <string name="title_home">Hallo, User!</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="errorMessage">Bitte füllen sie beide Felder aus</string>
 </resources>

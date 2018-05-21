@@ -4,41 +4,81 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class LogIn extends AppCompatActivity {
+public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
+    private UserDataSource dataSource;
+    public EditText editTextName;
+    public EditText editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        editTextName = (EditText) findViewById(R.id.editText_name);
+        editTextPassword = (EditText) findViewById(R.id.editText_password);
+        editTextName.setOnClickListener(this);
+        editTextPassword.setOnClickListener(this);
+
+        dataSource = new UserDataSource(this);
+
+        activateLogInButton();
     }
+
+    protected void onResume() {
+
+        super.onResume();
+        dataSource.open();
+    }
+
+    protected void onPause() {
+
+        super.onPause();
+        dataSource.close();
+    }
+
+    private void activateLogInButton(){
+
+        Button buttonLogIn = (Button) findViewById(R.id.button_logIn);
+        final EditText editTextUsername = (EditText) findViewById(R.id.editText_name);
+        final EditText editTextPassword = (EditText) findViewById(R.id.editText_password);
+
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userString = editTextUsername.getText().toString();
+                String passwordString = editTextPassword.getText().toString();
+
+                if(TextUtils.isEmpty(userString)){
+
+                    editTextUsername.setError(getString(R.string.errorMessage));
+                    return;
+                }
+                if(TextUtils.isEmpty(passwordString)){
+
+                    editTextUsername.setError(getString(R.string.errorMessage));
+                    return;
+                }
+
+                dataSource.createUser(userString, passwordString);
+            }
+        });
+
+    }
+
+    public void onClick(View v){
+
+        editTextName.setText("");
+        editTextPassword.setText("");
+    }
+
 
 }
