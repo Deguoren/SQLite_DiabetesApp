@@ -10,4 +10,11 @@
     <string name="string_reg">Registrieren</string>
     <string name="string_login">Log In</string>
     <string name="app_name">Sting</string>
+    <string name="string_welcome">Willkommen!</string>
+    <string name="string_registrate">Bitte registriere dich:</string>
+    <string name="string_letsgo">Auf geht's!</string>
+    <string name="title_activity_starting_page">activity_startingPage</string>
+    <string name="bar_start">Start</string>
+    <string name="bar_table">Tabelle</string>
+    <string name="bar_graph">Graph</string>
 </resources>
