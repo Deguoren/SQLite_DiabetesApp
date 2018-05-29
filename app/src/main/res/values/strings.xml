@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">SQLite_DiabetesApp</string>
+    <string name="app_title">SQLite_DiabetesApp</string>
     <string name="title_home">Hallo, User!</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="errorMessage">Bitte füllen sie beide Felder aus</string>
+    <string name="deineDaten">Deine Daten im Überblick</string>
+    <string name="string_pw">Passwort</string>
+    <string name="string_user">Benutzer</string>
+    <string name="string_reg">Registrieren</string>
+    <string name="string_login">Log In</string>
+    <string name="app_name">Sting</string>
 </resources>

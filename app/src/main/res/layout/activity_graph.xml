@@ -16,7 +16,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Deine Daten im Überblick" />
+        tools:text="@string/deineDaten" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

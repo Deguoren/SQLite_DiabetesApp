@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
-    private UserDataSource dataSource;
+    private DiabetesMemoDataSource dataSource;
     public EditText editTextName;
     public EditText editTextPassword;
 
@@ -28,7 +28,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         editTextName.setOnClickListener(this);
         editTextPassword.setOnClickListener(this);
 
-        dataSource = new UserDataSource(this);
+        dataSource = new DiabetesMemoDataSource(this);
 
         activateLogInButton();
     }
@@ -68,7 +68,6 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                     return;
                 }
 
-                dataSource.createUser(userString, passwordString);
             }
         });
 

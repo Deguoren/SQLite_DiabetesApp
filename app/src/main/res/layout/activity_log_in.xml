@@ -15,21 +15,22 @@
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/doctor" />
+        android:src="@drawable/sting" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="APPNAME"
-        android:textSize="23dp"
-        android:textAlignment="center"/>
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/editText_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Benutzer"
+        android:text="@string/string_user"
         android:drawableLeft="@drawable/user"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"/>
@@ -38,7 +39,7 @@
         android:id="@+id/editText_password"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Passwort"
+        android:text="@string/string_pw"
         android:drawableLeft="@drawable/lock"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
@@ -49,7 +50,7 @@
         android:id="@+id/button_logIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log In"
+        android:text="@string/string_login"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="5dp"
@@ -59,7 +60,7 @@
         android:id="@+id/button_reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrieren"
+        android:text="@string/string_reg"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"/>
 

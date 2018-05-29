@@ -19,16 +19,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Deine Daten im Überblick" />
-
-    <android.support.constraint.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="500dp"
-        android:minWidth="200dp"
-        app:barrierDirection="left"
-        tools:layout_editor_absoluteX="384dp" />
+        tools:text="@string/deineDaten" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -43,5 +34,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="267dp" />
-
+</android.support.constraint.ConstraintLayout>
 
