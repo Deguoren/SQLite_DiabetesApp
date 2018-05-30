@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LogIn">
+    tools:context=".activity_logIn">
 
     <ImageView
         android:id="@+id/front_image"
@@ -27,24 +27,24 @@
         android:textSize="30dp" />
 
     <EditText
-        android:id="@+id/editText_name"
+        android:id="@+id/editText_nameLogIn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/string_user"
         android:drawableLeft="@drawable/user"
         android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"/>
+        android:layout_marginRight="100dp"
+        android:hint="@string/string_user"/>
 
     <EditText
-        android:id="@+id/editText_password"
+        android:id="@+id/editText_passwordLogIn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/string_pw"
         android:drawableLeft="@drawable/lock"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:hint="@string/string_pw"/>
 
     <Button
         android:id="@+id/button_logIn"
@@ -53,8 +53,7 @@
         android:text="@string/string_login"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
-        android:layout_marginBottom="5dp"
-        android:onClick="onClick"/>
+        android:layout_marginBottom="5dp" />
 
     <Button
         android:id="@+id/button_reg"

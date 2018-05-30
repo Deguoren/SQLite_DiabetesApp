@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LogIn"
+            android:name=".activity_logIn"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,11 @@
         </activity>
         <activity
             android:name=".activity_startingPage"
-            android:label="@string/title_activity_starting_page"></activity>
+            android:label="@string/title_activity_starting_page" />
+        <activity
+            android:name=".activity_registrate"
+            android:label="@string/title_activity_registrate"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

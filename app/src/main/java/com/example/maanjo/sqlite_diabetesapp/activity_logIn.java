@@ -1,0 +1,92 @@
+package com.example.maanjo.sqlite_diabetesapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class activity_logIn extends AppCompatActivity{
+
+    private DiabetesMemoDataSource dataSource;
+    public EditText editTextName;
+    public EditText editTextPassword;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_log_in);
+
+        editTextName = findViewById(R.id.editText_nameLogIn);
+        editTextPassword = findViewById(R.id.editText_passwordLogIn);
+        dataSource = new DiabetesMemoDataSource(this);
+
+        activateLogInButton();
+        activateRegButton();
+    }
+
+    protected void onResume() {
+
+        super.onResume();
+        dataSource.open();
+    }
+
+    protected void onPause() {
+
+        super.onPause();
+        dataSource.close();
+    }
+
+    private void activateLogInButton(){
+
+        Button buttonLogIn = findViewById(R.id.button_logIn);
+        editTextName = findViewById(R.id.editText_nameLogIn);
+        editTextPassword = findViewById(R.id.editText_passwordLogIn);
+
+        buttonLogIn.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                String userString = editTextName.getText().toString();
+                String passwordString = editTextPassword.getText().toString();
+
+                if(TextUtils.isEmpty(userString)){
+
+                    editTextName.setError(getString(R.string.errorMessage));
+                    return;
+                }
+                if(TextUtils.isEmpty(passwordString)){
+
+                    editTextPassword.setError(getString(R.string.errorMessage));
+                    return;
+                }
+
+                if(dataSource.checkUserName(userString) && dataSource.checkPassword(userString)){
+
+                    startActivity(new Intent(activity_logIn.this, activity_startingPage.class));
+                }
+                else{
+                    editTextName.setError(getString(R.string.wrongLogIn));
+                    return;
+                }
+
+            }
+        });
+
+    }
+
+    public void activateRegButton(){
+
+        Button buttonReg = findViewById(R.id.button_reg);
+        buttonReg.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v){
+
+                startActivity(new Intent(activity_logIn.this, activity_registrate.class));
+            }
+        });
+    }
+
+}

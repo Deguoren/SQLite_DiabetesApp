@@ -5,16 +5,8 @@
     android:id="@+id/registrate"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/front_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/sting_3" />
+    android:orientation="vertical"
+    tools:context=".activity_registrate">
 
     <TextView
         android:layout_width="match_parent"
@@ -27,10 +19,10 @@
         tools:layout_editor_absoluteY="97dp" />
 
     <TextView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/string_registrate"
+        android:text="@string/string_typeUserName"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
@@ -38,20 +30,53 @@
         tools:layout_editor_absoluteY="97dp" />
 
     <EditText
-        android:id="@+id/editText_name"
+        android:id="@+id/editText_nameReg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/string_user"
+        android:hint="@string/string_user"
         android:drawableLeft="@drawable/user"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginTop="5dp"/>
 
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/string_typePw"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="97dp" />
+
     <EditText
-        android:id="@+id/editText_password"
+        android:id="@+id/editText_passwordReg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/string_pw"
+        android:hint="@string/string_pw"
+        android:drawableLeft="@drawable/lock"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="5dp"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/string_retypePw"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <EditText
+        android:id="@+id/editText_passwordReg2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/string_pw"
         android:drawableLeft="@drawable/lock"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
