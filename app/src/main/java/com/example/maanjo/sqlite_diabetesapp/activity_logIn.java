@@ -72,7 +72,8 @@ public class activity_logIn extends AppCompatActivity{
 
                 if(dataSource.checkUserName(userString) && dataSource.checkPassword(passwordString)){
 
-                    startActivity(new Intent(activity_logIn.this, activity_startingPage.class));
+
+                    startActivity(new Intent(activity_logIn.this, activity_startingPage.class).putExtra("userString", userString));
                 }
                 else{
                     editTextName.setError(getString(R.string.wrongLogIn));

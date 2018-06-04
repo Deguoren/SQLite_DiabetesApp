@@ -1,93 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity_startingPage">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="345dp"
-        android:layout_height="28dp"
-        android:layout_gravity="left"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="#d21d29"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintGuide_begin="44dp"
-        tools:layout_editor_absoluteY="33dp"
-        tools:text="Hi Name!" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcomeMes"
+        android:text="Hey, + Name!"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"/>
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="24dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="128dp"
-        tools:text="Wie geht's dir heute?" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/howRU"
+        android:text="@string/howRU_mes"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="332dp"
-        android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="172dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="345dp"
-            android:layout_height="wrap_content"
-            android:hint="eins" />
-
-    </android.support.design.widget.TextInputLayout>
+    <EditText
+        android:id="@+id/editText_nameReg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/string_user"
+        android:drawableLeft="@drawable/user"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="5dp"/>
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="201dp"
-        android:layout_height="33dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="24dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="251dp"
-        tools:text="Dein heutiger Blutzucker?" />
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/string_typePw"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="97dp" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="337dp"
-        android:layout_height="61dp"
-        android:layout_gravity="center"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="298dp">
-
-    </android.support.design.widget.TextInputLayout>
-
+    <EditText
+        android:id="@+id/editText_passwordReg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/string_pw"
+        android:drawableLeft="@drawable/lock"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="5dp"
+        android:inputType="textPassword"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
