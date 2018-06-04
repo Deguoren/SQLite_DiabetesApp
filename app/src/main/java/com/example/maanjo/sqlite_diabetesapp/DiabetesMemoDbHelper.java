@@ -25,18 +25,19 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
     public static final String COLUMN_blood_sugar = "bloodSugar";
 
 
-    public static final String SQL_CREATE =
+    public static final String sql_createUser_Table =
             "CREATE TABLE " + DIABETES_TABLE_user +
-                    "(" + COLUMN_User_ID + " INTEGER PRIMARY KEY AUTOINCREMENT; " +
+                    "(" + COLUMN_User_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_User_Name + " TEXT NOT NULL, " +
-                    COLUMN_User_Password + " TEXT NOT NULL);" +
+                    COLUMN_User_Password + " TEXT NOT NULL);";
 
-                    "CREATE TABLE " + DIABETES_TABLE_metric +
-                    "(" + COLUMN_User_ID + " INTEGER FOREIGN KEY AUTOINCREMENT, " +
-                    COLUMN_feeling + " TEXT NOT NULL, " +
-                    COLUMN_blood_sugar + " INTEGER NOT NULL, " +
-                    COLUMN_time + " TEXT NOT NULL);";
-
+    public static final String sql_createMetric_Table = "CREATE TABLE "
+            + DIABETES_TABLE_metric + "("
+            + COLUMN_feeling + " TEXT NOT NULL, "
+            + COLUMN_blood_sugar + " INTEGER NOT NULL, "
+            + COLUMN_time + " TEXT NOT NULL, "
+            + COLUMN_User_ID + " INTEGER, "
+            + " FOREIGN KEY ("+COLUMN_User_ID+") REFERENCES "+ DIABETES_TABLE_user +"("+COLUMN_User_ID+"));";
 
     public DiabetesMemoDbHelper(Context context) {
 
@@ -49,8 +50,11 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         try {
-            Log.d(LOG_TAG, "Die Tabelle wird mit SQL-Befehl: " + SQL_CREATE + " angelegt.");
-            db.execSQL(SQL_CREATE);
+            Log.d(LOG_TAG, "Die Tabelle  DIABETES_TABLE_user wird mit SQL-Befehl: " + sql_createUser_Table + " angelegt.");
+            db.execSQL(sql_createUser_Table);
+
+            Log.d(LOG_TAG, "Die Tabelle  DIABETES_TABLE_metric wird mit SQL-Befehl: " + sql_createMetric_Table + " angelegt.");
+            db.execSQL(sql_createMetric_Table);
         }
         catch (Exception ex) {
             Log.e(LOG_TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());

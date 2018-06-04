@@ -49,11 +49,11 @@ public class DiabetesMemoDataSource {
         Log.d(LOG_TAG, name+ " wurde angelegt.");
     }
 
-    public boolean checkUserName(String userName){
+    public boolean checkUserName(String name){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_Name};
-        String where = DiabetesMemoDbHelper.COLUMN_User_Name + " = " + userName;
-        String[] whereArgs = {userName};
+        String where = DiabetesMemoDbHelper.COLUMN_User_Name + " = ?";
+        String[] whereArgs = {name};
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_user,
                 columns, where, whereArgs, null,null, null);
@@ -71,7 +71,7 @@ public class DiabetesMemoDataSource {
     public boolean checkPassword(String password){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_Password};
-        String where = DiabetesMemoDbHelper.COLUMN_User_Password + " = " + password;
+        String where = DiabetesMemoDbHelper.COLUMN_User_Password + " = ?";
         String[] whereArgs = {password};
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_user,
