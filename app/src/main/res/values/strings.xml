@@ -10,17 +10,5 @@
     <string name="string_reg">Registrieren</string>
     <string name="string_login">Log In</string>
     <string name="app_name">Sting</string>
-    <string name="string_welcome">Herzlich Willkommen!</string>
-    <string name="string_letsgo">Auf gehts!</string>
-    <string name="title_activity_starting_page">activity_startingPage</string>
-    <string name="bar_start">Start</string>
-    <string name="bar_table">Tabelle</string>
-    <string name="bar_graph">Graph</string>
-    <string name="wrongLogIn">Benutzername oder Passwort falsch!</string>
-    <string name="string_retypePw">Passwort bestätigen:</string>
-    <string name="string_typePw">Bitte wähle ein Passwort:</string>
-    <string name="string_typeUserName">Bitte wähle einen Benutzernamen:</string>
-    <string name="title_activity_registrate">activity_registrate</string>
-    <string name="errorMessageSecPw">Die Passwörter stimmer nicht überein!</string>
-    <string name="howRU_mes">Wie geht es dir?</string>
+    <string name="eins">eins</string>
 </resources>
