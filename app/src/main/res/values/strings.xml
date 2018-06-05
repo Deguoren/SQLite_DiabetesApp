@@ -11,4 +11,6 @@
     <string name="string_login">Log In</string>
     <string name="app_name">Sting</string>
     <string name="eins">eins</string>
+    <string name="date">Datum / Uhrzeit</string>
+    <string name="skala">Blutzucket</string>
 </resources>
