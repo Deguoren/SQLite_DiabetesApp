@@ -14,4 +14,7 @@
     <string name="Blutzucker">Dokumentiere deinen Blutzucker</string>
     <string name="date">Datum / Uhrzeit</string>
     <string name="blutzucker">Blutzuckerwert</string>
+    <string name="bar_start">Start</string>
+    <string name="bar_table">Table</string>
+    <string name="bar_graph">Graph</string>
 </resources>
