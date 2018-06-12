@@ -23,4 +23,7 @@
     <string name="title_activity_registrate">activity_registrate</string>
     <string name="errorMessageSecPw">Die Passwörter stimmer nicht überein!</string>
     <string name="howRU_mes">Wie geht es dir?</string>
+    <string name="bloodSugar">Dein aktueller Blutzuckerwert:</string>
+    <string name="eingabe">Eingabe</string>
+    <string name="bloodSugar_low">Dein BLutzucker ist niedrig!</string>
 </resources>

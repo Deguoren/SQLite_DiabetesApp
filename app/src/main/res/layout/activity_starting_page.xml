@@ -15,32 +15,33 @@
         android:text="Hey, + Name!"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorAccent"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/howRU"
         android:text="@string/howRU_mes"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textAlignment="center"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="80dp"
+        android:textColor="@color/colorAccent"/>
 
     <EditText
         android:id="@+id/editText_nameReg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/string_user"
-        android:drawableLeft="@drawable/user"
+        android:drawableLeft="@drawable/chat"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="10dp"/>
 
     <TextView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/string_typePw"
+        android:text="@string/bloodSugar"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
@@ -51,12 +52,20 @@
         android:id="@+id/editText_passwordReg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/string_pw"
-        android:drawableLeft="@drawable/lock"
+        android:drawableLeft="@drawable/syringe"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
         android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/button_eingabe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/eingabe"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -65,6 +74,7 @@
         android:layout_gravity="center"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
+        android:layout_marginTop="60dp"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" />
 

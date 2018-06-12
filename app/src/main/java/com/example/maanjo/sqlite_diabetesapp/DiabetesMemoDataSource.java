@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DiabetesMemoDataSource {
 
@@ -49,6 +52,19 @@ public class DiabetesMemoDataSource {
         Log.d(LOG_TAG, name+ " wurde angelegt.");
     }
 
+    public void createBloodValue(int bloodSugar, String feeling){
+
+        ContentValues bloodEntry = new ContentValues();
+
+        bloodEntry.put(DiabetesMemoDbHelper.COLUMN_blood_sugar, bloodSugar);
+        bloodEntry.put(DiabetesMemoDbHelper.COLUMN_feeling, feeling);
+
+        database.insert(DiabetesMemoDbHelper.DIABETES_TABLE_metric, null, bloodEntry);
+
+        Log.d(LOG_TAG, "Blutzuckermesswert " + bloodSugar + "wurde angelegt");
+
+    }
+
     public boolean checkUserName(String name){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_Name};
@@ -85,6 +101,42 @@ public class DiabetesMemoDataSource {
         }
 
         return false;
+    }
+
+    private BloodValue cursorToBloodValue(Cursor cursor){
+
+        int idBloodSugar = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_blood_sugar);
+        int idFeeling = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_feeling);
+
+        int bloodSugar = cursor.getInt(idBloodSugar);
+        String feeling = cursor.getString(idFeeling);
+
+
+        BloodValue bloodValue = new BloodValue()
+
+
+    }
+
+    public List<BloodValue> getAllBloodValue(){
+
+        List<BloodValue> bloodValueList = new ArrayList<>();
+
+        Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_metric,
+                columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        BloodValue value;
+
+        while(!cursor.isAfterLast()){
+
+            value = cursorToBloodValue(cursor);
+            bloodValueList.add(value);
+            Log.d(LOG_TAG, "Blutzucker: " + value.getBlood_sugar());
+            cursor.moveToNext();
+
+        }
+
+
     }
 
 }
