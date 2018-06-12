@@ -1,16 +1,11 @@
 package com.example.maanjo.sqlite_diabetesapp;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,16 +25,16 @@ public class activity_startingPage extends AppCompatActivity {
         dataSource = new DiabetesMemoDataSource(this);
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
-        mTextMessage = (TextView) findViewById(R.id.welcomeMes);
+        mTextMessage = (TextView) findViewById(R.id.greetings);
         mTextMessage.setText("Hey, " + getIntent().getStringExtra("userString"));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        activateLogInButton();
+       // activateLogInButton();
     }
 
-    private void activateLogInButton(){
+   /* private void activateLogInButton(){
 
         Button buttonLogIn = findViewById(R.id.button_eingabe);
         editTextFeeling = findViewById(R.id.editText_nameLogIn);
@@ -60,7 +55,7 @@ public class activity_startingPage extends AppCompatActivity {
         });
 
     }
-
+*/
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

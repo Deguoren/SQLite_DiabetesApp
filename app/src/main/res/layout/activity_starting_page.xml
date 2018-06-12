@@ -17,21 +17,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/sting_3"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/greetings"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/howRu"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
         android:layout_gravity="center"
         android:layout_marginStart="108dp"
         android:layout_marginTop="60dp"
-        android:text="@string/title_home"
+        android:text="@string/howRU_mes"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/greetings"
         tools:text="Wie geht's dir heute?" />
 
     <android.support.design.widget.TextInputLayout
@@ -44,7 +44,7 @@
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/howRu">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="345dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/greetings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
