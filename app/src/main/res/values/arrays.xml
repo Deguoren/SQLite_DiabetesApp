@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="feeling">
+        <item>Gut</item>
+        <item>Mittelmäßig</item>
+        <item>Schlecht</item>
+    </string-array>
+</resources>

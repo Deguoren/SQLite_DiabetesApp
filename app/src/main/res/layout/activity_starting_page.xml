@@ -38,24 +38,21 @@
         app:layout_constraintTop_toBottomOf="@+id/greetings"
         tools:text="Wie geht's dir heute?" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="332dp"
-        android:layout_height="58dp"
+    <Spinner
+        android:id="@+id/feeling_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
+        android:drawSelectorOnTop="true"
+        android:entries="@array/feeling"
+        android:entryValues="@array/feeling"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/howRu">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="345dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/gefuehl" />
-
-    </android.support.design.widget.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/howRu" />
 
     <TextView
         android:id="@+id/textView6"
@@ -69,7 +66,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/feeling_spinner"
         tools:ignore="MissingConstraints"
         tools:text="Dein heutiger Blutzucker?" />
 

@@ -112,7 +112,7 @@ public class DiabetesMemoDataSource {
         String feeling = cursor.getString(idFeeling);
 
 
-       BloodValue bloodValue = new BloodValue();
+       BloodValue bloodValue = new BloodValue(bloodSugar, feeling);
 
         return bloodValue;
     }

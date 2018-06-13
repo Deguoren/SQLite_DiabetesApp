@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.sql.Date;
+
 public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
 
     private static final String LOG_TAG = DiabetesMemoDbHelper.class.getSimpleName();
@@ -21,7 +23,7 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
     public static final String COLUMN_User_Password = "userPassword";
 
     public static final String COLUMN_feeling = "feeling";
-    public static final String COLUMN_time = "time";
+    public static final String COLUMN_time = "date";
     public static final String COLUMN_blood_sugar = "bloodSugar";
 
 
