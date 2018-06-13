@@ -28,4 +28,5 @@
     <string name="date">Datum / Uhrzeit</string>
     <string name="blutzucker">Blutzuckerwert</string>
     <string name="welcomeMes">Hey, </string>
+    <string name="eingabe">Eingabe</string>
 </resources>

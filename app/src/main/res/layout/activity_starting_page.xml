@@ -6,7 +6,8 @@
     android:backgroundTint="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".startingPage">
 
     <ImageView
         android:id="@+id/front_image"
@@ -21,16 +22,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/howRu"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
         android:layout_gravity="center"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/howRU_mes"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greetings"
         tools:text="Wie geht's dir heute?" />
 
@@ -39,9 +43,9 @@
         android:layout_width="332dp"
         android:layout_height="58dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/howRu">
@@ -58,11 +62,13 @@
         android:layout_width="201dp"
         android:layout_height="33dp"
         android:layout_gravity="center"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         android:text="@string/deineDaten"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         tools:ignore="MissingConstraints"
         tools:text="Dein heutiger Blutzucker?" />
@@ -101,6 +107,8 @@
         android:textAppearance="@android:style/TextAppearance.Material.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
@@ -114,7 +122,9 @@
         android:id="@+id/textInputLayout2"
         android:layout_width="317dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
@@ -124,6 +134,19 @@
             android:layout_height="wrap_content"
             android:hint="@string/Blutzucker" />
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_eingabe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/eingabe"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout2"
+        tools:layout_editor_absoluteX="30dp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

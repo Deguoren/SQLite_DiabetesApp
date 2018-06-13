@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class activity_logIn extends AppCompatActivity{
+public class logIn extends AppCompatActivity{
 
-    public static final String LOG_TAG = activity_logIn.class.getSimpleName();
+    public static final String LOG_TAG = logIn.class.getSimpleName();
     private DiabetesMemoDataSource dataSource;
     public EditText editTextName;
     public EditText editTextPassword;
@@ -73,7 +73,7 @@ public class activity_logIn extends AppCompatActivity{
                 if(dataSource.checkUserName(userString) && dataSource.checkPassword(passwordString)){
 
 
-                    startActivity(new Intent(activity_logIn.this, activity_startingPage.class).putExtra("userString", userString));
+                    startActivity(new Intent(logIn.this, startingPage.class).putExtra("userString", userString));
                 }
                 else{
                     editTextName.setError(getString(R.string.wrongLogIn));
@@ -92,7 +92,7 @@ public class activity_logIn extends AppCompatActivity{
 
             public void onClick(View v){
 
-                startActivity(new Intent(activity_logIn.this, activity_registrate.class));
+                startActivity(new Intent(logIn.this, registrate.class));
             }
         });
     }

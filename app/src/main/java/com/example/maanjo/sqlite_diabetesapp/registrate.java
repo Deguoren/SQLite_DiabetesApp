@@ -2,16 +2,12 @@ package com.example.maanjo.sqlite_diabetesapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class activity_registrate extends AppCompatActivity{
+public class registrate extends AppCompatActivity{
 
     private DiabetesMemoDataSource dataSource;
     public EditText editTextName;
@@ -47,7 +43,7 @@ public class activity_registrate extends AppCompatActivity{
                 if(passwordString.equals(passwordConfirmString)) {
 
                     dataSource.createUser(userString, passwordString);
-                    startActivity(new Intent(activity_registrate.this, activity_logIn.class));
+                    startActivity(new Intent(registrate.this, logIn.class));
                     return;
 
                 }else{

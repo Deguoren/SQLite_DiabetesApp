@@ -6,7 +6,8 @@
     android:backgroundTint="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".logIn">
 
     <ImageView
         android:id="@+id/front_image"

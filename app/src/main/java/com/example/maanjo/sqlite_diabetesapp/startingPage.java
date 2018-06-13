@@ -1,17 +1,20 @@
 package com.example.maanjo.sqlite_diabetesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class activity_startingPage extends AppCompatActivity {
+public class startingPage extends AppCompatActivity {
 
-    public static final String LOG_TAG = activity_logIn.class.getSimpleName();
+    public static final String LOG_TAG = logIn.class.getSimpleName();
     private TextView mTextMessage;
     private DiabetesMemoDataSource dataSource;
     public EditText editTextFeeling;
@@ -31,10 +34,10 @@ public class activity_startingPage extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-       // activateLogInButton();
+       activateLogInButton();
     }
 
-   /* private void activateLogInButton(){
+    private void activateLogInButton(){
 
         Button buttonLogIn = findViewById(R.id.button_eingabe);
         editTextFeeling = findViewById(R.id.editText_nameLogIn);
@@ -55,7 +58,7 @@ public class activity_startingPage extends AppCompatActivity {
         });
 
     }
-*/
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -63,13 +66,18 @@ public class activity_startingPage extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_start:
-                    mTextMessage.setText(R.string.title_home);
+
+                    startActivity(new Intent(startingPage.this, startingPage.class));
                     return true;
+
                 case R.id.navigation_table:
-                    mTextMessage.setText(R.string.title_dashboard);
+
+                    startActivity(new Intent(startingPage.this, tableView.class));
                     return true;
+
                 case R.id.navigation_graph:
-                    mTextMessage.setText(R.string.title_notifications);
+
+                    startActivity(new Intent(startingPage.this, graphView.class));
                     return true;
             }
             return false;

@@ -103,7 +103,7 @@ public class DiabetesMemoDataSource {
         return false;
     }
 
-    /*private BloodValue cursorToBloodValue(Cursor cursor){
+    private BloodValue cursorToBloodValue(Cursor cursor){
 
         int idBloodSugar = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_blood_sugar);
         int idFeeling = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_feeling);
@@ -114,7 +114,7 @@ public class DiabetesMemoDataSource {
 
        BloodValue bloodValue = new BloodValue();
 
-
+        return bloodValue;
     }
 
     public List<BloodValue> getAllBloodValue(){
@@ -137,6 +137,6 @@ public class DiabetesMemoDataSource {
         }
 
 
-    }*/
+    }
 
 }
