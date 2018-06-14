@@ -52,12 +52,14 @@ public class DiabetesMemoDataSource {
         Log.d(LOG_TAG, name+ " wurde angelegt.");
     }
 
-    public void createBloodValue(int bloodSugar, String feeling){
+    public void createBloodValue(int bloodSugar, String feeling, int userId){
 
         ContentValues bloodEntry = new ContentValues();
 
         bloodEntry.put(DiabetesMemoDbHelper.COLUMN_blood_sugar, bloodSugar);
         bloodEntry.put(DiabetesMemoDbHelper.COLUMN_feeling, feeling);
+        bloodEntry.put(DiabetesMemoDbHelper.COLUMN_time, System.currentTimeMillis());
+        bloodEntry.put(DiabetesMemoDbHelper.COLUMN_User_ID, userId);
 
         database.insert(DiabetesMemoDbHelper.DIABETES_TABLE_metric, null, bloodEntry);
 
@@ -107,22 +109,29 @@ public class DiabetesMemoDataSource {
 
         int idBloodSugar = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_blood_sugar);
         int idFeeling = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_feeling);
+        int idDate = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_time);
+        int idUserId = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_User_ID);
 
         int bloodSugar = cursor.getInt(idBloodSugar);
         String feeling = cursor.getString(idFeeling);
+        long time = cursor.getInt(idDate);
+        int userId = cursor.getInt(idUserId);
 
 
-       BloodValue bloodValue = new BloodValue(bloodSugar, feeling);
+       BloodValue bloodValue = new BloodValue(feeling, time, bloodSugar, userId);
 
         return bloodValue;
     }
 
-    public List<BloodValue> getAllBloodValue(){
+    public List<BloodValue> getAllBloodValue(String userString){
 
         List<BloodValue> bloodValueList = new ArrayList<>();
+        String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID};
+        String where = DiabetesMemoDbHelper.COLUMN_User_Name + " = ?";
+        String[] whereArgs = {userString};
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_metric,
-                columns, null, null, null, null, null);
+                columns, where, whereArgs, null, null, null);
 
         cursor.moveToFirst();
         BloodValue value;
@@ -136,7 +145,27 @@ public class DiabetesMemoDataSource {
 
         }
 
+        return bloodValueList;
+    }
 
+    public int getUserId(String userString){
+
+        String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID};
+        String where = DiabetesMemoDbHelper.COLUMN_User_Name + " = ?";
+        String[] whereArgs = {userString};
+        int userId = 999;
+
+        Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_user,
+                columns, where, whereArgs, null,null, null);
+
+        if(cursor != null && cursor.moveToFirst()){
+
+            if(cursor.getCount() > 0){
+
+                userId = cursor.getInt(0);
+            }
+        }
+        return userId;
     }
 
 }

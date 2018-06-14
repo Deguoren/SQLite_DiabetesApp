@@ -37,7 +37,7 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
             + DIABETES_TABLE_metric + "("
             + COLUMN_feeling + " TEXT NOT NULL, "
             + COLUMN_blood_sugar + " INTEGER NOT NULL, "
-            + COLUMN_time + " TEXT NOT NULL, "
+            + COLUMN_time + " LONG NOT NULL, "
             + COLUMN_User_ID + " INTEGER, "
             + " FOREIGN KEY ("+COLUMN_User_ID+") REFERENCES "+ DIABETES_TABLE_user +"("+COLUMN_User_ID+"));";
 

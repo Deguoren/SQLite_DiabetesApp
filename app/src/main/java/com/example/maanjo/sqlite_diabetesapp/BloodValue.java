@@ -3,11 +3,11 @@ package com.example.maanjo.sqlite_diabetesapp;
 public class BloodValue {
 
     private String feeling;
-    private String time;
+    private long time;
     private int blood_sugar;
     private int user_id;
 
-    public BloodValue(String feeling, String time, int blood_sugar, int user_id) {
+    public BloodValue(String feeling, Long time, int blood_sugar, int user_id) {
         this.feeling = feeling;
         this.time = time;
         this.blood_sugar = blood_sugar;

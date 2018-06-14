@@ -24,7 +24,7 @@
     <string name="errorMessageSecPw">Die Passwörter stimmer nicht überein!</string>
     <string name="howRU_mes">Wie geht es dir?</string>
     <string name="gefuehl">Dokumentiere dein Befinden</string>
-    <string name="Blutzucker">Dokumentiere deinen Blutzucker</string>
+    <string name="Blutzucker">Dein Blutzuckerwert</string>
     <string name="date">Datum / Uhrzeit</string>
     <string name="blutzucker">Blutzuckerwert</string>
     <string name="welcomeMes">Hey, </string>
