@@ -28,16 +28,17 @@ public class tableView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.data_overview_table);
         dataSource = new DiabetesMemoDataSource(this);
-        String userString = getIntent().getStringExtra("userString");
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
+        int userId = getIntent().getIntExtra("userId", 0);
+
         tableHelper = new TableHelper(this);
-        tv = (TableView<String[]>)findViewById(R.id.tableView);
+        tv = findViewById(R.id.tableView);
         tv.setColumnCount(4);
         tv.setHeaderAdapter(new SimpleTableHeaderAdapter(this,tableHelper.getTableHeader()));
-        tv.setDataAdapter(new SimpleTableDataAdapter(this, tableHelper.getBloodValue(userString)));
+        tv.setDataAdapter(new SimpleTableDataAdapter(this, tableHelper.getBloodValue(userId)));
 
     }
 

@@ -25,6 +25,7 @@ public class startingPage extends AppCompatActivity{
     public String userName;
     public Button buttonEingabe;
     public Spinner feeling_spinner;
+    public int userId;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -71,7 +72,7 @@ public class startingPage extends AppCompatActivity{
                 String feeling = feeling_spinner.getSelectedItem().toString();
                 String bloodSugarStr = editTextBloodSugar.getText().toString();
                 int bloodSugar = Integer.parseInt(bloodSugarStr);
-                int userId = dataSource.getUserId(getIntent().getStringExtra("userString"));
+                userId = dataSource.getUserId(getIntent().getStringExtra("userString"));
 
                 dataSource.createBloodValue(bloodSugar,feeling, userId);
             }
@@ -84,8 +85,6 @@ public class startingPage extends AppCompatActivity{
 
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            String userString = getIntent().getStringExtra("userString");
-
             switch (item.getItemId()) {
                 case R.id.navigation_start:
 
@@ -94,12 +93,12 @@ public class startingPage extends AppCompatActivity{
 
                 case R.id.navigation_table:
 
-                    startActivity(new Intent(startingPage.this, tableView.class).putExtra("userString", userString));
+                    startActivity(new Intent(startingPage.this, tableView.class).putExtra("userId", userId));
                     return true;
 
                 case R.id.navigation_graph:
 
-                    startActivity(new Intent(startingPage.this, graphView.class).putExtra("userString", userString));
+                    startActivity(new Intent(startingPage.this, graphView.class).putExtra("userId", userId));
                     return true;
             }
             return false;

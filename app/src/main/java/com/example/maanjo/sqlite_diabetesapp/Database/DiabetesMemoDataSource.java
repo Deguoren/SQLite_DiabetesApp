@@ -62,7 +62,7 @@ public class DiabetesMemoDataSource {
 
         database.insert(DiabetesMemoDbHelper.DIABETES_TABLE_metric, null, bloodEntry);
 
-        Log.d(LOG_TAG, "Blutzuckermesswert " + bloodSugar + "wurde angelegt");
+        Log.d(LOG_TAG, "Blutzuckermesswert " + bloodSugar + " wurde angelegt");
 
     }
 
@@ -122,16 +122,20 @@ public class DiabetesMemoDataSource {
         return bloodValue;
     }
 
-    public ArrayList<BloodValue> getAllBloodValue(String userString){
+    public ArrayList<BloodValue> getAllBloodValue(int userId){
 
         ArrayList<BloodValue> bloodValueList = new ArrayList<>();
 
-        String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID};
-        String where = DiabetesMemoDbHelper.COLUMN_User_Name + " = ?";
-        String[] whereArgs = {userString};
+        String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID, DiabetesMemoDbHelper.COLUMN_time,
+                DiabetesMemoDbHelper.COLUMN_blood_sugar, DiabetesMemoDbHelper.COLUMN_feeling};
+
+        String userIdStr = Integer.toString(userId);
+        String where = DiabetesMemoDbHelper.COLUMN_User_ID +" LIKE '%"+userIdStr+"%'";
+
+        //String[] whereArgs = {userIdStr};
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_metric,
-                columns, where, whereArgs, null, null, null);
+                columns, where, null, null, null, null);
 
         cursor.moveToFirst();
         BloodValue value;
@@ -140,31 +144,34 @@ public class DiabetesMemoDataSource {
 
             value = cursorToBloodValue(cursor);
             bloodValueList.add(value);
-            Log.d(LOG_TAG, "Blutzucker: " + value.getBlood_sugar());
             cursor.moveToNext();
 
         }
-
+        Log.d(LOG_TAG, "Blutzuckerliste wurde erstellt");
         return bloodValueList;
     }
 
-    public int getUserId(String userString){
+    public int getUserId(String userName){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID};
-        String where = DiabetesMemoDbHelper.COLUMN_User_Name +" LIKE '%"+userString+"%'";
-        String[] whereArgs = {userString};
+        String where = DiabetesMemoDbHelper.COLUMN_User_Name +" LIKE '%"+userName+"%'";
+        int userId;
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_user,
                 columns, where, null, null,null, null);
 
+        cursor.moveToFirst();
+
         if (cursor != null && cursor.moveToFirst()) {
+
             if (cursor.getCount() > 0) {
 
-                return cursor.getInt(0);
+                Log.d(LOG_TAG, "UserId: " + cursor.getInt(0));
+                userId = cursor.getInt(0);
+                return userId;
             }
         }
-        return 0;
-
+        return cursor.getInt(0);
     }
 
 }

@@ -27,6 +27,11 @@
             android:label="@string/title_activity_registrate"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".Activities.tableView"
+            android:label="@string/title_activity_tableView"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

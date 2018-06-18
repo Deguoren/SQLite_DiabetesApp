@@ -29,4 +29,5 @@
     <string name="blutzucker">Blutzuckerwert</string>
     <string name="welcomeMes">Hey, </string>
     <string name="eingabe">Eingabe</string>
+    <string name="title_activity_tableView">Deine Übersicht</string>
 </resources>

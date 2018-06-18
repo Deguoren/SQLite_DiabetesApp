@@ -21,11 +21,10 @@ public class TableHelper {
         return tableHeader;
     }
 
-    public String[][] getBloodValue(String userName){
+    public String[][] getBloodValue(int userId){
 
-        ArrayList<BloodValue> bloodValues = new DiabetesMemoDataSource(c).getAllBloodValue(userName);
+        ArrayList<BloodValue> bloodValues = new DiabetesMemoDataSource(c).getAllBloodValue(userId);
         BloodValue b;
-
         bloodValueArr = new String[bloodValues.size()][4];
 
         for(int i = 0; i < bloodValues.size(); i++){
