@@ -21,7 +21,6 @@ public class startingPage extends AppCompatActivity{
     public static final String LOG_TAG = logIn.class.getSimpleName();
     private TextView mTextMessage;
     private DiabetesMemoDataSource dataSource;
-    public EditText editTextFeeling;
     public EditText editTextBloodSugar;
     public String userName;
     public Button buttonEingabe;
@@ -39,13 +38,27 @@ public class startingPage extends AppCompatActivity{
         mTextMessage.setText("Hey, " + getIntent().getStringExtra("userString"));
         userName = getIntent().getStringExtra("userString");
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-       activateEnterInButton();
+       activateEnterButton();
     }
 
-    private void activateEnterInButton(){
+    protected void onResume() {
+
+        super.onResume();
+        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
+        dataSource.open();
+    }
+
+    protected void onPause() {
+
+        super.onPause();
+        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+        dataSource.close();
+    }
+
+    private void activateEnterButton(){
 
         buttonEingabe = findViewById(R.id.button_eingabe);
         feeling_spinner = findViewById(R.id.feeling_spinner);
@@ -58,7 +71,7 @@ public class startingPage extends AppCompatActivity{
                 String feeling = feeling_spinner.getSelectedItem().toString();
                 String bloodSugarStr = editTextBloodSugar.getText().toString();
                 int bloodSugar = Integer.parseInt(bloodSugarStr);
-                int userId = dataSource.getUserId(userName);
+                int userId = dataSource.getUserId(getIntent().getStringExtra("userString"));
 
                 dataSource.createBloodValue(bloodSugar,feeling, userId);
             }

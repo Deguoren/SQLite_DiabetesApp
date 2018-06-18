@@ -151,21 +151,20 @@ public class DiabetesMemoDataSource {
     public int getUserId(String userString){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID};
-        String where = DiabetesMemoDbHelper.COLUMN_User_Name + " = ?";
+        String where = DiabetesMemoDbHelper.COLUMN_User_Name +" LIKE '%"+userString+"%'";
         String[] whereArgs = {userString};
-        int userId = 0;
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_user,
-                columns, where, whereArgs, null,null, null);
+                columns, where, null, null,null, null);
 
-        if(cursor != null && cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
+            if (cursor.getCount() > 0) {
 
-            if(cursor.getCount() > 0){
-
-                userId = cursor.getInt(0);
+                return cursor.getInt(0);
             }
         }
-        return userId;
+        return 0;
+
     }
 
 }
