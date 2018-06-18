@@ -1,11 +1,9 @@
-package com.example.maanjo.sqlite_diabetesapp;
+package com.example.maanjo.sqlite_diabetesapp.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import java.sql.Date;
 
 public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
 

@@ -1,4 +1,4 @@
-package com.example.maanjo.sqlite_diabetesapp;
+package com.example.maanjo.sqlite_diabetesapp.Database;
 
 public class User {
 

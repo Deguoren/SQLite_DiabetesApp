@@ -1,4 +1,4 @@
-package com.example.maanjo.sqlite_diabetesapp;
+package com.example.maanjo.sqlite_diabetesapp.Database;
 
 public class BloodValue {
 
@@ -22,11 +22,11 @@ public class BloodValue {
         this.feeling = feeling;
     }
 
-    public String getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 

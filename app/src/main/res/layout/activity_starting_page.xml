@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".startingPage">
+    tools:context=".Activities.startingPage">
 
     <ImageView
         android:id="@+id/front_image"
