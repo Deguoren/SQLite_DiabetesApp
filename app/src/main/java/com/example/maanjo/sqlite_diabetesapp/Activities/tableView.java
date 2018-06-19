@@ -1,5 +1,6 @@
 package com.example.maanjo.sqlite_diabetesapp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,11 +33,12 @@ public class tableView extends AppCompatActivity {
         dataSource = new DiabetesMemoDataSource(this);
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
-        int userId = getIntent().getIntExtra("userId", 0);
+        Intent intent = getIntent();
+        int userId = intent.getIntExtra("userId", 0);
 
         tableHelper = new TableHelper(this);
         tv = findViewById(R.id.tableView);
-        tv.setColumnCount(4);
+        tv.setColumnCount(3);
         tv.setHeaderAdapter(new SimpleTableHeaderAdapter(this,tableHelper.getTableHeader()));
         tv.setDataAdapter(new SimpleTableDataAdapter(this, tableHelper.getBloodValue(userId)));
 

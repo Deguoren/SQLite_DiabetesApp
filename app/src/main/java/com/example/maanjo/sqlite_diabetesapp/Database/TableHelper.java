@@ -8,7 +8,7 @@ public class TableHelper {
 
     Context c;
 
-    private String[] tableHeader = {"UserID", "Zeit", "Blutwert", "Gefühlslage"};
+    private String[] tableHeader = {"Zeit", "Blutwert", "Gefühlslage"};
     private String[][] bloodValueArr;
 
     public TableHelper(Context c){
@@ -25,16 +25,15 @@ public class TableHelper {
 
         ArrayList<BloodValue> bloodValues = new DiabetesMemoDataSource(c).getAllBloodValue(userId);
         BloodValue b;
-        bloodValueArr = new String[bloodValues.size()][4];
+        bloodValueArr = new String[bloodValues.size()][3];
 
         for(int i = 0; i < bloodValues.size(); i++){
 
             b = bloodValues.get(i);
 
-            bloodValueArr[i][0] = Integer.toString(b.getUser_id());
-            bloodValueArr[i][1] = Long.toString(b.getTime());
-            bloodValueArr[i][2] = Integer.toString(b.getBlood_sugar());
-            bloodValueArr[i][3] = b.getFeeling();
+            bloodValueArr[i][0] = Long.toString(b.getTime());
+            bloodValueArr[i][1] = Integer.toString(b.getBlood_sugar());
+            bloodValueArr[i][2] = b.getFeeling();
 
         }
         return bloodValueArr;

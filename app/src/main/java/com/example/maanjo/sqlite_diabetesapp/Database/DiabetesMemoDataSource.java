@@ -16,15 +16,8 @@ public class DiabetesMemoDataSource {
     private SQLiteDatabase database;
     private DiabetesMemoDbHelper dbHelper;
 
-    private String[] columns = {
-            DiabetesMemoDbHelper.COLUMN_User_ID,
-            DiabetesMemoDbHelper.COLUMN_User_Name,
-            DiabetesMemoDbHelper.COLUMN_User_Password
-    };
-
-
     public DiabetesMemoDataSource (Context context) {
-        Log.d(LOG_TAG, "Unsere DataSource erzeugt jetzt den dbHelper.");
+        Log.d(LOG_TAG, "DataSource erzeugt jetzt den dbHelper.");
         dbHelper = new DiabetesMemoDbHelper(context);
     }
 
@@ -54,15 +47,16 @@ public class DiabetesMemoDataSource {
     public void createBloodValue(int bloodSugar, String feeling, int userId){
 
         ContentValues bloodEntry = new ContentValues();
+        long time = System.currentTimeMillis();
 
         bloodEntry.put(DiabetesMemoDbHelper.COLUMN_blood_sugar, bloodSugar);
         bloodEntry.put(DiabetesMemoDbHelper.COLUMN_feeling, feeling);
-        bloodEntry.put(DiabetesMemoDbHelper.COLUMN_time, System.currentTimeMillis());
+        bloodEntry.put(DiabetesMemoDbHelper.COLUMN_time, time);
         bloodEntry.put(DiabetesMemoDbHelper.COLUMN_User_ID, userId);
 
         database.insert(DiabetesMemoDbHelper.DIABETES_TABLE_metric, null, bloodEntry);
 
-        Log.d(LOG_TAG, "Blutzuckermesswert " + bloodSugar + " wurde angelegt");
+        Log.d(LOG_TAG, "Blutzuckermesswert: " + bloodSugar +"|"+feeling+"|"+ "|"+ time+"|"+userId+" wurde angelegt");
 
     }
 
@@ -113,7 +107,7 @@ public class DiabetesMemoDataSource {
 
         int bloodSugar = cursor.getInt(idBloodSugar);
         String feeling = cursor.getString(idFeeling);
-        long time = cursor.getInt(idDate);
+        long time = cursor.getLong(idDate);
         int userId = cursor.getInt(idUserId);
 
 
@@ -122,16 +116,16 @@ public class DiabetesMemoDataSource {
         return bloodValue;
     }
 
-    public ArrayList<BloodValue> getAllBloodValue(int userId){
+    public ArrayList<BloodValue> getAllBloodValue(int userId) {
 
+        database = dbHelper.getWritableDatabase();
         ArrayList<BloodValue> bloodValueList = new ArrayList<>();
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID, DiabetesMemoDbHelper.COLUMN_time,
                 DiabetesMemoDbHelper.COLUMN_blood_sugar, DiabetesMemoDbHelper.COLUMN_feeling};
 
-        String userIdStr = Integer.toString(userId);
-        String where = DiabetesMemoDbHelper.COLUMN_User_ID +" LIKE '%"+userIdStr+"%'";
-
+        String where = DiabetesMemoDbHelper.COLUMN_User_ID + " = " + userId;
+        //String userIdStr = String.valueOf(userId);
         //String[] whereArgs = {userIdStr};
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_metric,
@@ -140,14 +134,16 @@ public class DiabetesMemoDataSource {
         cursor.moveToFirst();
         BloodValue value;
 
-        while(!cursor.isAfterLast()){
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
 
-            value = cursorToBloodValue(cursor);
-            bloodValueList.add(value);
-            cursor.moveToNext();
+                value = cursorToBloodValue(cursor);
+                bloodValueList.add(value);
 
+            } while (cursor.moveToNext());
         }
         Log.d(LOG_TAG, "Blutzuckerliste wurde erstellt");
+        cursor.close();
         return bloodValueList;
     }
 

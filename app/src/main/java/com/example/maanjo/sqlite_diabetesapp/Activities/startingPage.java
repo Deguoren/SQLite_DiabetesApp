@@ -85,6 +85,8 @@ public class startingPage extends AppCompatActivity{
 
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+            userId = dataSource.getUserId(getIntent().getStringExtra("userString"));
+
             switch (item.getItemId()) {
                 case R.id.navigation_start:
 
