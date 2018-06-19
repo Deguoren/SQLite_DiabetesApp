@@ -48,6 +48,7 @@ public class startingPage extends AppCompatActivity{
     protected void onResume() {
 
         super.onResume();
+        mTextMessage.setText("Hey, " + getIntent().getStringExtra("userString"));
         Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
     }
@@ -95,7 +96,13 @@ public class startingPage extends AppCompatActivity{
 
                 case R.id.navigation_table:
 
-                    startActivity(new Intent(startingPage.this, tableView.class).putExtra("userId", userId));
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("userId", userId);
+                    bundle.putString("userName", userName);
+                    Intent table_intent = new Intent();
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.tableView");
+                    table_intent.putExtras(bundle);
+                    startActivity(table_intent);
                     return true;
 
                 case R.id.navigation_graph:

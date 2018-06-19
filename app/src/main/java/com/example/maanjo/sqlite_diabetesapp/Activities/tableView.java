@@ -2,8 +2,11 @@ package com.example.maanjo.sqlite_diabetesapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,6 +27,7 @@ public class tableView extends AppCompatActivity {
     private DiabetesMemoDataSource dataSource;
     TableView<String[]> tv;
     TableHelper tableHelper;
+    String userName;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,13 @@ public class tableView extends AppCompatActivity {
         dataSource = new DiabetesMemoDataSource(this);
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         int userId = intent.getIntExtra("userId", 0);
+        userName = intent.getStringExtra("userName");*/
+
+        Bundle bundle = getIntent().getExtras();
+        int userId = bundle.getInt("userId", 0);
+        userName = bundle.getString("userName");
 
         tableHelper = new TableHelper(this);
         tv = findViewById(R.id.tableView);
@@ -42,6 +51,8 @@ public class tableView extends AppCompatActivity {
         tv.setHeaderAdapter(new SimpleTableHeaderAdapter(this,tableHelper.getTableHeader()));
         tv.setDataAdapter(new SimpleTableDataAdapter(this, tableHelper.getBloodValue(userId)));
 
+        BottomNavigationView navigation = findViewById(R.id.navigation2);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     protected void onResume() {
@@ -58,5 +69,31 @@ public class tableView extends AppCompatActivity {
         Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+            switch (item.getItemId()) {
+                case R.id.navigation_start:
+
+                    startActivity(new Intent(tableView.this, startingPage.class).putExtra("userName", userName));
+                    return true;
+
+                case R.id.navigation_table:
+
+                    startActivity(new Intent(tableView.this, tableView.class));
+                    return true;
+
+                case R.id.navigation_graph:
+
+                    startActivity(new Intent(tableView.this, graphView.class));
+                    return true;
+            }
+            return false;
+        }
+    };
 }
 
