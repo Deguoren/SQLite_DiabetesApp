@@ -35,8 +35,9 @@ public class startingPage extends AppCompatActivity{
         dataSource = new DiabetesMemoDataSource(this);
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
-        mTextMessage = (TextView) findViewById(R.id.greetings);
-        mTextMessage.setText("Hey, " + getIntent().getStringExtra("userString"));
+        mTextMessage = findViewById(R.id.greetings);
+        String name = getIntent().getStringExtra("userString");
+        mTextMessage.setText(new StringBuilder().append("Hey, ").append(name).toString());
         userName = getIntent().getStringExtra("userString");
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
@@ -48,7 +49,9 @@ public class startingPage extends AppCompatActivity{
     protected void onResume() {
 
         super.onResume();
-        mTextMessage.setText("Hey, " + getIntent().getStringExtra("userString"));
+        mTextMessage = findViewById(R.id.greetings);
+        String name = getIntent().getStringExtra("userString");
+        mTextMessage.setText(new StringBuilder().append("Hey, ").append(name).toString());
         Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
     }

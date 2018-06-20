@@ -2,7 +2,9 @@ package com.example.maanjo.sqlite_diabetesapp.Database;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TableHelper {
 
@@ -31,7 +33,11 @@ public class TableHelper {
 
             b = bloodValues.get(i);
 
-            bloodValueArr[i][0] = Long.toString(b.getTime());
+            Long date_milSec = b.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+            Date resultdate = new Date(date_milSec);
+
+            bloodValueArr[i][0] = sdf.format(resultdate);
             bloodValueArr[i][1] = Integer.toString(b.getBlood_sugar());
             bloodValueArr[i][2] = b.getFeeling();
 

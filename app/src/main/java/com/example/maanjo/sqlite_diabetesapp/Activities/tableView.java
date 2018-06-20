@@ -37,10 +37,6 @@ public class tableView extends AppCompatActivity {
         dataSource = new DiabetesMemoDataSource(this);
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
-        /*Intent intent = getIntent();
-        int userId = intent.getIntExtra("userId", 0);
-        userName = intent.getStringExtra("userName");*/
-
         Bundle bundle = getIntent().getExtras();
         int userId = bundle.getInt("userId", 0);
         userName = bundle.getString("userName");
@@ -79,6 +75,8 @@ public class tableView extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_start:
 
+                    Bundle bundle = getIntent().getExtras();
+                    userName = bundle.getString("userName");
                     startActivity(new Intent(tableView.this, startingPage.class).putExtra("userName", userName));
                     return true;
 

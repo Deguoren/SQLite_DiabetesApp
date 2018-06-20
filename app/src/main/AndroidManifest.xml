@@ -32,6 +32,11 @@
             android:label="@string/title_activity_tableView"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".Activities.graphView"
+            android:label="@string/title_activity_graphView"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
