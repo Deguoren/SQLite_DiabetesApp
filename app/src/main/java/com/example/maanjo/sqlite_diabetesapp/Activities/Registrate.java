@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.R;
 
-public class registrate extends AppCompatActivity{
+public class Registrate extends AppCompatActivity{
 
     private DiabetesMemoDataSource dataSource;
     public EditText editTextName;
@@ -46,7 +46,7 @@ public class registrate extends AppCompatActivity{
                 if(passwordString.equals(passwordConfirmString)) {
 
                     dataSource.createUser(userString, passwordString);
-                    startActivity(new Intent(registrate.this, logIn.class));
+                    startActivity(new Intent(Registrate.this, logIn.class));
                     return;
 
                 }else{

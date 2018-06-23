@@ -23,7 +23,7 @@
             android:label="@string/title_activity_starting_page" >
         </activity>
         <activity
-            android:name=".Activities.registrate"
+            android:name=".Activities.Registrate"
             android:label="@string/title_activity_registrate"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

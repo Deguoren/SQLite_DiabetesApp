@@ -32,8 +32,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:text="@string/deineDaten"
-        android:textColor="@drawable/ic_home_black_24dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/tableViewScroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation2" />
 
 </android.support.constraint.ConstraintLayout>

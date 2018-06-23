@@ -95,7 +95,7 @@ public class logIn extends AppCompatActivity{
 
             public void onClick(View v){
 
-                startActivity(new Intent(logIn.this, registrate.class));
+                startActivity(new Intent(logIn.this, Registrate.class));
             }
         });
     }

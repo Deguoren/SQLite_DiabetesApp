@@ -90,19 +90,21 @@ public class startingPage extends AppCompatActivity{
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             userId = dataSource.getUserId(getIntent().getStringExtra("userString"));
+            Bundle bundle = new Bundle();
+            bundle.putInt("userId", userId);
+            bundle.putString("userName", userName);
+            Intent table_intent = new Intent();
 
             switch (item.getItemId()) {
                 case R.id.navigation_start:
 
-                    startActivity(new Intent(startingPage.this, startingPage.class));
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.startingPage");
+                    table_intent.putExtras(bundle);
+                    startActivity(table_intent);
                     return true;
 
                 case R.id.navigation_table:
 
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("userId", userId);
-                    bundle.putString("userName", userName);
-                    Intent table_intent = new Intent();
                     table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.tableView");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
@@ -110,7 +112,9 @@ public class startingPage extends AppCompatActivity{
 
                 case R.id.navigation_graph:
 
-                    startActivity(new Intent(startingPage.this, graphView.class).putExtra("userId", userId));
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.graphView");
+                    table_intent.putExtras(bundle);
+                    startActivity(table_intent);
                     return true;
             }
             return false;

@@ -63,8 +63,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:text="@string/deineDaten"
-        android:textColor="@drawable/ic_home_black_24dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feeling_spinner"
@@ -103,8 +102,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="44dp"
         android:text="@string/title_home"
-        android:textColor="@drawable/ic_home_black_24dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -153,7 +151,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="16dp"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"

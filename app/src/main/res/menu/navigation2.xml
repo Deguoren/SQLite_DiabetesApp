@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_start2"
+        android:icon="@drawable/start"
+        android:title="@string/bar_start" />
+
+    <item
+        android:id="@+id/navigation_table2"
+        android:icon="@drawable/table"
+        android:title="@string/bar_table" />
+
+    <item
+        android:id="@+id/navigation_graph2"
+        android:icon="@drawable/graph"
+        android:title="@string/bar_graph" />
+
+</menu>

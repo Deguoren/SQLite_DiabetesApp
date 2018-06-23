@@ -14,15 +14,25 @@ import java.util.Date;
 public class GraphHelper {
 
     Context c;
-
-    private String[][] bloodValueArr;
+    private Long minX;
+    private Long maxX;
 
     public GraphHelper(Context c){
 
         this.c = c;
     }
 
-    public LineGraphSeries<DataPoint> getGraphData(int userId){
+    public Long getMinX(){
+
+        return this.minX;
+    }
+
+    public Long getMaxX(){
+
+        return this.maxX;
+    }
+
+   public LineGraphSeries<DataPoint> getGraphData(int userId){
 
         ArrayList<BloodValue> bloodValues = new DiabetesMemoDataSource(c).getAllBloodValue(userId);
         BloodValue b;
@@ -38,7 +48,15 @@ public class GraphHelper {
             SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
             Date resultDate = new Date(date_milSec);
 
-            dataPoints[i} = new DataPoint(resultDate, bloodSugar);
+            dataPoints[i] = new DataPoint(resultDate, bloodSugar);
+
+            if(i == 0){
+
+                minX = date_milSec;
+            }
+            if(i == bloodValues.size()-1){
+                maxX = date_milSec;
+            }
 
         }
 
