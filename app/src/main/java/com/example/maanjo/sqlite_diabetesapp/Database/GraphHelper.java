@@ -45,7 +45,6 @@ public class GraphHelper {
 
             int bloodSugar = b.getBlood_sugar();
             Long date_milSec = b.getTime();
-            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
             Date resultDate = new Date(date_milSec);
 
             dataPoints[i] = new DataPoint(resultDate, bloodSugar);

@@ -12,9 +12,9 @@ import android.widget.EditText;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.R;
 
-public class logIn extends AppCompatActivity{
+public class LogIn extends AppCompatActivity{
 
-    public static final String LOG_TAG = logIn.class.getSimpleName();
+    public static final String LOG_TAG = LogIn.class.getSimpleName();
     private DiabetesMemoDataSource dataSource;
     public EditText editTextName;
     public EditText editTextPassword;
@@ -76,7 +76,7 @@ public class logIn extends AppCompatActivity{
                 if(dataSource.checkUserName(userString) && dataSource.checkPassword(passwordString)){
 
 
-                    startActivity(new Intent(logIn.this, startingPage.class).putExtra("userString", userString));
+                    startActivity(new Intent(LogIn.this, StartingPage.class).putExtra("userString", userString));
                 }
                 else{
                     editTextName.setError(getString(R.string.wrongLogIn));
@@ -95,7 +95,7 @@ public class logIn extends AppCompatActivity{
 
             public void onClick(View v){
 
-                startActivity(new Intent(logIn.this, Registrate.class));
+                startActivity(new Intent(LogIn.this, Registrate.class));
             }
         });
     }

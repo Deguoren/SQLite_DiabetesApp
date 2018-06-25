@@ -46,7 +46,7 @@ public class Registrate extends AppCompatActivity{
                 if(passwordString.equals(passwordConfirmString)) {
 
                     dataSource.createUser(userString, passwordString);
-                    startActivity(new Intent(Registrate.this, logIn.class));
+                    startActivity(new Intent(Registrate.this, LogIn.class));
                     return;
 
                 }else{

@@ -16,9 +16,9 @@ import android.widget.TextView;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.R;
 
-public class startingPage extends AppCompatActivity{
+public class StartingPage extends AppCompatActivity{
 
-    public static final String LOG_TAG = logIn.class.getSimpleName();
+    public static final String LOG_TAG = LogIn.class.getSimpleName();
     private TextView mTextMessage;
     private DiabetesMemoDataSource dataSource;
     public EditText editTextBloodSugar;
@@ -36,8 +36,8 @@ public class startingPage extends AppCompatActivity{
         Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
 
         mTextMessage = findViewById(R.id.greetings);
-        String name = getIntent().getStringExtra("userString");
-        mTextMessage.setText(new StringBuilder().append("Hey, ").append(name).toString());
+        userName = String.valueOf(getIntent().getStringExtra("userString"));
+        mTextMessage.setText(new StringBuilder().append("Hey, ").append(userName).toString());
         userName = getIntent().getStringExtra("userString");
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
@@ -50,8 +50,8 @@ public class startingPage extends AppCompatActivity{
 
         super.onResume();
         mTextMessage = findViewById(R.id.greetings);
-        String name = getIntent().getStringExtra("userString");
-        mTextMessage.setText(new StringBuilder().append("Hey, ").append(name).toString());
+        userName = String.valueOf(getIntent().getStringExtra("userString"));
+        mTextMessage.setText(new StringBuilder().append("Hey, ").append(userName).toString());
         Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
     }
@@ -92,27 +92,27 @@ public class startingPage extends AppCompatActivity{
             userId = dataSource.getUserId(getIntent().getStringExtra("userString"));
             Bundle bundle = new Bundle();
             bundle.putInt("userId", userId);
-            bundle.putString("userName", userName);
+            bundle.putString("userName", String.valueOf(userName));
             Intent table_intent = new Intent();
 
             switch (item.getItemId()) {
                 case R.id.navigation_start:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.startingPage");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.StartingPage");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;
 
                 case R.id.navigation_table:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.tableView");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.TableViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;
 
                 case R.id.navigation_graph:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.graphView");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.GraphViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;

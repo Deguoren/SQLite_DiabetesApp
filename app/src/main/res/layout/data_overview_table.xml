@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background3"
-    tools:context=".Activities.tableView">
+    tools:context=".Activities.TableViewer">
 
     <ScrollView
         android:id="@+id/tableViewScroll"
@@ -31,6 +31,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
+        android:textAlignment="center"
         android:text="@string/deineDaten"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toTopOf="@+id/tableViewScroll"

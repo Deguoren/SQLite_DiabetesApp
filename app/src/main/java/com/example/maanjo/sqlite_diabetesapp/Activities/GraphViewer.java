@@ -7,13 +7,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import com.example.maanjo.sqlite_diabetesapp.Database.BloodValue;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.Database.GraphHelper;
-import com.example.maanjo.sqlite_diabetesapp.Database.TableHelper;
 import com.example.maanjo.sqlite_diabetesapp.R;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
@@ -23,20 +19,13 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import de.codecrafters.tableview.TableView;
-import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
-import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
+public class GraphViewer extends AppCompatActivity {
 
-import static java.lang.reflect.Array.getInt;
-
-public class graphView extends AppCompatActivity {
-
-    public static final String LOG_TAG = logIn.class.getSimpleName();
+    public static final String LOG_TAG = LogIn.class.getSimpleName();
     private DiabetesMemoDataSource dataSource;
     GraphHelper graphHelper;
-    GraphView line_graph;
+    com.jjoe64.graphview.GraphView line_graph;
     LineGraphSeries<DataPoint> data_series;
     String userName;
     public int userId;
@@ -70,6 +59,17 @@ public class graphView extends AppCompatActivity {
             }
         });
 
+        line_graph.getGridLabelRenderer().setHorizontalAxisTitle("Zeitpunkt");
+        line_graph.getGridLabelRenderer().setVerticalAxisTitle("Blutzucker");
+
+        line_graph.getViewport().setXAxisBoundsManual(true);
+        line_graph.getViewport().setMinX(graphHelper.getMinX());
+        line_graph.getViewport().setMaxX(graphHelper.getMaxX());
+
+        line_graph.getGridLabelRenderer().setHumanRounding(false);
+        line_graph.getViewport().setScrollable(true);
+
+
         BottomNavigationView navigation = findViewById(R.id.navigation3);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -102,21 +102,19 @@ public class graphView extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_start3:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.startingPage");
-                    table_intent.putExtras(bundle);
-                    startActivity(table_intent);
+                    startActivity(new Intent(GraphViewer.this, StartingPage.class).putExtra("userString", userName));
                     return true;
 
                 case R.id.navigation_table3:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.tableView");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.TableViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;
 
                 case R.id.navigation_graph3:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.graphView");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.GraphViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;

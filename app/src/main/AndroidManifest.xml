@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.logIn"
+            android:name=".Activities.LogIn"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.startingPage"
+            android:name=".Activities.StartingPage"
             android:label="@string/title_activity_starting_page" >
         </activity>
         <activity
@@ -28,12 +28,12 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Activities.tableView"
+            android:name=".Activities.TableViewer"
             android:label="@string/title_activity_tableView"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Activities.graphView"
+            android:name=".Activities.GraphViewer"
             android:label="@string/title_activity_graphView"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

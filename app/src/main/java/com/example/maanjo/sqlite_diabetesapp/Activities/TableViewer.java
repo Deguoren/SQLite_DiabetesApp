@@ -7,25 +7,19 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import com.example.maanjo.sqlite_diabetesapp.Database.BloodValue;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.Database.TableHelper;
 import com.example.maanjo.sqlite_diabetesapp.R;
 
-import java.util.List;
-
-import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
-public class tableView extends AppCompatActivity {
+public class TableViewer extends AppCompatActivity {
 
-    public static final String LOG_TAG = logIn.class.getSimpleName();
+    public static final String LOG_TAG = LogIn.class.getSimpleName();
     private DiabetesMemoDataSource dataSource;
-    public TableView<String[]> tv;
+    public de.codecrafters.tableview.TableView<String[]> tv;
     public TableHelper tableHelper;
     public String userName;
     public int userId;
@@ -73,27 +67,25 @@ public class tableView extends AppCompatActivity {
 
             Bundle bundle = new Bundle();
             bundle.putInt("userId", userId);
-            bundle.putString("userName", userName);
+            bundle.putString("userName", String.valueOf(userName));
             Intent table_intent = new Intent();
 
             switch (item.getItemId()) {
                 case R.id.navigation_start2:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.startingPage");
-                    table_intent.putExtras(bundle);
-                    startActivity(table_intent);
+                    startActivity(new Intent(TableViewer.this, StartingPage.class).putExtra("userString", userName));
                     return true;
 
                 case R.id.navigation_table2:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.tableView");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.TableViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;
 
                 case R.id.navigation_graph2:
 
-                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.graphView");
+                    table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.GraphViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
                     return true;
