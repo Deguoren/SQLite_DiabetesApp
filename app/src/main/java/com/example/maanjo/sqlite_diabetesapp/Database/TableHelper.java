@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Hilfsklasse zur Erstellung einer Tabelle für die Activity TableViewer
+ */
 public class TableHelper {
 
     Context c;
@@ -13,16 +16,33 @@ public class TableHelper {
     private String[] tableHeader = {"Zeit", "Blutwert", "Gefühlslage"};
     private String[][] bloodValueArr;
 
+    /**
+     * Konstruktor
+     * Initialisiert den Kontext
+     *
+     * @param c: Anwendungskontext
+     */
     public TableHelper(Context c){
 
         this.c = c;
     }
 
+    /**
+     * Getter-Methode für die Variable tableHeader (Spaltenüberschriften)
+     *
+     * @return Spaltenüberschriften
+     */
     public String[] getTableHeader(){
 
         return tableHeader;
     }
 
+    /**
+     * Auslesen und Zwischenspeichern aller Einträge der Tabelle Metrics für die übergebene UserID
+     *
+     * @param userId: NutzerID
+     * @return 2-Dimensionales Array mit allen Tupeln der Tabelle Metrics
+     */
     public String[][] getBloodValue(int userId){
 
         ArrayList<BloodValue> bloodValues = new DiabetesMemoDataSource(c).getAllBloodValue(userId);

@@ -11,27 +11,55 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Hilfsklasse zur Erstellung eines Graphen für die Activity GraphViewer
+ * Zuhilfe gezogene graph plotting library:
+ * @Link http://www.android-graphview.org/
+ */
 public class GraphHelper {
 
     Context c;
     private Long minX;
     private Long maxX;
 
+    /**
+     * Konstruktor
+     * Initialisiert den Kontext
+     *
+     * @param c: Anwendungskontext
+     */
     public GraphHelper(Context c){
 
         this.c = c;
     }
 
+    /**
+     * Getter Methoden der niedrigsten X-Koordinate
+     *
+     * @return Niedrigste X-Koordinate
+     */
     public Long getMinX(){
 
         return this.minX;
     }
 
+    /**
+     * Getter Methoden der höchsten X-Koordinate
+     *
+     * @return Höchste X-Koordinate
+     */
     public Long getMaxX(){
 
         return this.maxX;
     }
 
+    /**
+     *Auslesen aller Einträge der Tabelle Metrics mit der übergebenen UserId und überführen in
+     * LineGraphSeries<DataPoint>-Format, die von einem Graph übernommen werden kann.
+     *
+     * @param userId: Übergebene UserID
+     * @return Der UserId entsprechende Einträge der Tabelle Metrics in LineGraphSeries<DataPoint>-Form
+     */
    public LineGraphSeries<DataPoint> getGraphData(int userId){
 
         ArrayList<BloodValue> bloodValues = new DiabetesMemoDataSource(c).getAllBloodValue(userId);

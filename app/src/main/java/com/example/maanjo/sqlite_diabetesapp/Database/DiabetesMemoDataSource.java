@@ -8,6 +8,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+/**
+ * Beinhaltet alle Methoden, die direkt auf die Datenbank zugreifen (Werte eintragen & Auslesen)
+ */
 
 public class DiabetesMemoDataSource {
 
@@ -16,22 +19,40 @@ public class DiabetesMemoDataSource {
     private SQLiteDatabase database;
     private DiabetesMemoDbHelper dbHelper;
 
+    /**
+     * Konstruktor
+     * Initialisiert den DiabetesMemoDbHelper (SQLiteOpenHelper)
+     *
+     * @param context: Anwendungskontext
+     */
     public DiabetesMemoDataSource (Context context) {
         Log.d(LOG_TAG, "DataSource erzeugt jetzt den dbHelper.");
         dbHelper = new DiabetesMemoDbHelper(context);
     }
 
+    /**
+     * Öffnet Verbindung zur Datenbank
+     */
     public void open() {
         Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
         database = dbHelper.getWritableDatabase();
         Log.d(LOG_TAG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + database.getPath());
     }
 
+    /**
+     * Schließt bestehende Verbindung zur Datenbank
+     */
     public void close() {
         dbHelper.close();
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
+    /**
+     * Hinzufügen eines User-Eintrags in der User-Tabelle
+     *
+     * @param name: Benutzername
+     * @param password: Passwort des Nutzers
+     */
     public void createUser(String name, String password){
 
         ContentValues userEntry = new ContentValues();
@@ -44,6 +65,14 @@ public class DiabetesMemoDataSource {
         Log.d(LOG_TAG, name+ " wurde angelegt.");
     }
 
+    /**
+     * Hinzufügen eines Blutwert-Eintrags in der Metrics-Tabelle
+     * Zeit wird nicht übergeben, da diese automatisch durch System.currentTimeMillis() ermittelt wird.
+     *
+     * @param bloodSugar: aktueller Blutzuckerwert
+     * @param feeling: Stimmung des Nutzers
+     * @param userId: automatisch vergebene UserID
+     */
     public void createBloodValue(int bloodSugar, String feeling, int userId){
 
         ContentValues bloodEntry = new ContentValues();
@@ -60,6 +89,12 @@ public class DiabetesMemoDataSource {
 
     }
 
+    /**
+     * Überprüfen, ob Nutzername in der Datenbank vorhanden ist
+     *
+     * @param name: Eingegebener Nutzername
+     * @return True oder False, abhängig davon, ob der User bereits vorhanden ist
+     */
     public boolean checkUserName(String name){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_Name};
@@ -79,6 +114,12 @@ public class DiabetesMemoDataSource {
         return false;
     }
 
+    /**
+     * Überprüfen, ob das Password in der Datenbank vorhanden ist
+     *
+     * @param password: Eingegebenes Passwort
+     * @return True oder Flase, abhängig davon, ob der User bereits vorhanden ist
+     */
     public boolean checkPassword(String password){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_Password};
@@ -98,6 +139,12 @@ public class DiabetesMemoDataSource {
         return false;
     }
 
+    /**
+     * Eintrag der Tabelle Metrics an der Stelle des Cursors wird ermittelt
+     *
+     * @param cursor: Auswahl der SQL-Query
+     * @return Blutzuckerwert; enthält die Informationen Gefühl, Zeit, Blutzuckerwert und UserID
+     */
     private BloodValue cursorToBloodValue(Cursor cursor){
 
         int idBloodSugar = cursor.getColumnIndex(DiabetesMemoDbHelper.COLUMN_blood_sugar);
@@ -116,6 +163,12 @@ public class DiabetesMemoDataSource {
         return bloodValue;
     }
 
+    /**
+     * Ausgabe aller Einträge der Tabelle Metrics mit der übergebenen UserID
+     *
+     * @param userId: Übergebene UserID
+     * @return Alle Tupel der Relation Metrics in Form einer ArrayList
+     */
     public ArrayList<BloodValue> getAllBloodValue(int userId) {
 
         database = dbHelper.getWritableDatabase();
@@ -125,8 +178,6 @@ public class DiabetesMemoDataSource {
                 DiabetesMemoDbHelper.COLUMN_blood_sugar, DiabetesMemoDbHelper.COLUMN_feeling};
 
         String where = DiabetesMemoDbHelper.COLUMN_User_ID + " = " + userId;
-        //String userIdStr = String.valueOf(userId);
-        //String[] whereArgs = {userIdStr};
 
         Cursor cursor = database.query(DiabetesMemoDbHelper.DIABETES_TABLE_metric,
                 columns, where, null, null, null, null);
@@ -147,6 +198,12 @@ public class DiabetesMemoDataSource {
         return bloodValueList;
     }
 
+    /**
+     * Ermittelt die UserID, die zu dem übergebenen UserName gehört
+     *
+     * @param userName: Übergebener Benutzername
+     * @return User ID
+     */
     public int getUserId(String userName){
 
         String[] columns = {DiabetesMemoDbHelper.COLUMN_User_ID};

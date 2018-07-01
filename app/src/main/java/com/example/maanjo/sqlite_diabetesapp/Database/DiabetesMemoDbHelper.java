@@ -5,8 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Individualisierte SQLiteOpenHelper-Klasse.
+ * Wird verwendet, um Datenbankstruktur (Datenbank & Tabellen) zu erzeugen.
+ */
 public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
 
+    /**
+     * Deklarieren und Initialisieren der SQL-Elemente in Form von Strings.
+     */
     private static final String LOG_TAG = DiabetesMemoDbHelper.class.getSimpleName();
 
     public static final String DB_NAME = "Diabetes_Db";
@@ -24,6 +31,9 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
     public static final String COLUMN_time = "time";
     public static final String COLUMN_blood_sugar = "bloodSugar";
 
+    /**
+     * Deklarieren und Initialisieren der SQL-Statements zum Erzeugen der Tabellen.
+     */
 
     public static final String sql_createUser_Table =
             "CREATE TABLE " + DIABETES_TABLE_user +
@@ -46,7 +56,12 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
 
     }
 
-    @Override
+    /**
+     * Methode wird ausgeführt, wenn die Applikation zum ersten Mal gestartet wird; Tabellen werden erzeugt
+     *
+     * @param db: Zu befüllende Datenbank
+     */
+
     public void onCreate(SQLiteDatabase db) {
 
         try {
@@ -61,7 +76,14 @@ public class DiabetesMemoDbHelper extends SQLiteOpenHelper{
         }
     }
 
-    @Override
+    /**
+     * Methode wird ausgeführt, wenn die Datenbank geupdated wird.
+     * Funktion in unserer Applikation nicht eingeführt.
+     *
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
