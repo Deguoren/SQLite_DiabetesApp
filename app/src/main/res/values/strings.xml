@@ -3,7 +3,7 @@
     <string name="title_home">Hallo, User!</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="errorMessage">Bitte füllen sie beide Felder aus</string>
+    <string name="errorMessage">Bitte füllen sie alle Felder aus</string>
     <string name="deineDaten">Deine Daten im Überblick</string>
     <string name="string_pw">Passwort</string>
     <string name="string_user">Benutzer</string>

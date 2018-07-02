@@ -1,13 +1,8 @@
 package com.example.maanjo.sqlite_diabetesapp.Database;
 
 import android.content.Context;
-
-import com.example.maanjo.sqlite_diabetesapp.R;
-import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 

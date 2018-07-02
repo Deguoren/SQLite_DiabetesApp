@@ -12,14 +12,16 @@ import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.Database.GraphHelper;
 import com.example.maanjo.sqlite_diabetesapp.R;
 import com.jjoe64.graphview.DefaultLabelFormatter;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * GraphViewer verwaltet die Funktionalitäten der Oberfläche data_overview_graph
+ *
+ */
 public class GraphViewer extends AppCompatActivity {
 
     public static final String LOG_TAG = LogIn.class.getSimpleName();
@@ -31,6 +33,14 @@ public class GraphViewer extends AppCompatActivity {
     public int userId;
     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd.MM");
 
+    /**
+     * OnCreate-Methode der Klasse GraphViewer
+     * Referenziert die Klasse zum Layout und öffnet die Datenbankverbindung
+     * Übernimmt die Daten aus der vorherigen Activity und benutzt diese, um dem Graph Werte zuzuweisen
+     * Ist zuständig für die Formatierung des Graphen
+     *
+     * @param savedInstanceState: Gespeicherter Zustand der Activity
+     */
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -74,6 +84,9 @@ public class GraphViewer extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    /**
+     * Öffnet Verbindung zur Datenbank, wenn Activity erneute geöffnet wird
+     */
     protected void onResume() {
 
         super.onResume();
@@ -82,6 +95,9 @@ public class GraphViewer extends AppCompatActivity {
 
     }
 
+    /**
+     * Schließt bestehende Verbindung zur Datenbank, wenn die Activity pausiert wird
+     */
     protected void onPause() {
 
         super.onPause();
@@ -89,9 +105,18 @@ public class GraphViewer extends AppCompatActivity {
         dataSource.close();
     }
 
+    //Hinzufügen eines Listeners zu dem BottomNavigationView (Menü)
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        /**
+         * Anonyme onNavigationItemSelected-Listener Klasse
+         * Fügt den einzelnen Menüfeldern eine Funktionalität hinzu
+         * Hier: Navigieren zwischen den Activities Graph, Tabelle und Startseite
+         *
+         * @param item: Ausgewähltes Element des Menüs
+         * @return True oder False, abhängig davon, ob ein Element ausgewählt wurde
+         */
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             Bundle bundle = new Bundle();
@@ -102,11 +127,13 @@ public class GraphViewer extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_start3:
 
+                    //Activity StartingPage wird aufgerufen und der UserName als Parameter mitgegeben
                     startActivity(new Intent(GraphViewer.this, StartingPage.class).putExtra("userString", userName));
                     return true;
 
                 case R.id.navigation_table3:
 
+                    //Activity TableViewer wird aufgerufen und der UserName und die UserId werden mitgegeben
                     table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.TableViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);
@@ -114,6 +141,7 @@ public class GraphViewer extends AppCompatActivity {
 
                 case R.id.navigation_graph3:
 
+                    //Activity GraphViewer wird aufgerufen und der UserName und die UserId werden mitgegeben
                     table_intent.setClassName("com.example.maanjo.sqlite_diabetesapp", "com.example.maanjo.sqlite_diabetesapp.Activities.GraphViewer");
                     table_intent.putExtras(bundle);
                     startActivity(table_intent);

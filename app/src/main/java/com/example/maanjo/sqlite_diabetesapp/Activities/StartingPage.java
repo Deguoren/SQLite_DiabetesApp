@@ -16,6 +16,9 @@ import android.widget.TextView;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.R;
 
+/**
+ * StartingPage verwaltet die Funktionalitäten der Oberfläche activity_starting_page
+ */
 public class StartingPage extends AppCompatActivity{
 
     public static final String LOG_TAG = LogIn.class.getSimpleName();
@@ -27,6 +30,14 @@ public class StartingPage extends AppCompatActivity{
     public Spinner feeling_spinner;
     public int userId;
 
+    /**
+     * OnCreate-Methode der Klasse Registrate
+     * Referenziert die Klasse zum Layout und öffnet die Datenbankverbindung
+     * Übernimmt die Parameter aus der vorherigen Activity
+     * Setzt den Begrüßungstext
+     *
+     * @param savedInstanceState: Gespeicherter Zustand der Activity
+     */
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -46,6 +57,9 @@ public class StartingPage extends AppCompatActivity{
        activateEnterButton();
     }
 
+    /**
+     * Öffnet Verbindung zur Datenbank, wenn Activity erneut geöffnet wird
+     */
     protected void onResume() {
 
         super.onResume();
@@ -56,6 +70,9 @@ public class StartingPage extends AppCompatActivity{
         dataSource.open();
     }
 
+    /**
+     * Schließt bestehende Verbindung zur Datenbank, wenn Activity pausiert wird
+     */
     protected void onPause() {
 
         super.onPause();
@@ -63,6 +80,11 @@ public class StartingPage extends AppCompatActivity{
         dataSource.close();
     }
 
+    /**
+     * Funktionalitäten, die ausgeführt werden, wenn der Enter-Button gedrückt wird
+     * Hinzufügen eines OnClick-Listeners
+     * Erzeugen eines Eintrages in der Tabelle Metric durch aufrufen der Methode createBloodValue()
+     */
     private void activateEnterButton(){
 
         buttonEingabe = findViewById(R.id.button_eingabe);
@@ -84,9 +106,18 @@ public class StartingPage extends AppCompatActivity{
 
     }
 
+    //Hinzufügen eines Listeners zu dem BottomNavigationView (Menü)
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        /**
+         * Anonyme onNavigationItemSelected-Listener Klasse
+         * Fügt den einzelnen Menüfeldern eine Funktionalität hinzu
+         * Hier: Navigieren zwischen den Activities Graph, Tabelle und Startseite
+         *
+         * @param item: Ausgewähltes Element des Menüs
+         * @return True oder False, abhängig davon, ob ein Element ausgewählt wurde
+         */
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             userId = dataSource.getUserId(getIntent().getStringExtra("userString"));

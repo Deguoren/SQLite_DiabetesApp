@@ -12,6 +12,9 @@ import android.widget.EditText;
 import com.example.maanjo.sqlite_diabetesapp.Database.DiabetesMemoDataSource;
 import com.example.maanjo.sqlite_diabetesapp.R;
 
+/**
+ * LogIn verwaltet die Funktionalitäten der Oberfläche activity_logIn
+ */
 public class LogIn extends AppCompatActivity{
 
     public static final String LOG_TAG = LogIn.class.getSimpleName();
@@ -19,7 +22,13 @@ public class LogIn extends AppCompatActivity{
     public EditText editTextName;
     public EditText editTextPassword;
 
-    @Override
+    /**
+     * OnCreate-Methode der Klasse LogIn
+     * Referenziert die Klasse zum Layout und öffnet die Datenbankverbindung
+     * Speichert die Eingabewerte der Felder Name und Passwort zwischen
+     *
+     * @param savedInstanceState: Gespeicherter Zustand der Activity
+     */
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -35,6 +44,9 @@ public class LogIn extends AppCompatActivity{
         activateRegButton();
     }
 
+    /**
+     * Öffnet Verbindung zur Datenbank, wenn Activity erneut geöffnet wird
+     */
     protected void onResume() {
 
         super.onResume();
@@ -42,6 +54,9 @@ public class LogIn extends AppCompatActivity{
         dataSource.open();
     }
 
+    /**
+     * Schließt bestehende Verbindung zur Datenbank, wenn Activity pausiert wird
+     */
     protected void onPause() {
 
         super.onPause();
@@ -49,6 +64,13 @@ public class LogIn extends AppCompatActivity{
         dataSource.close();
     }
 
+    /**
+     * Funktionalitäten, die ausgeführt werden, wenn der LogIn-Button gedrückt wird
+     * Hinzufügen eines OnClick-Listeners
+     * Überprüfen, ob Eingabefelder leer sind
+     * Überprüfen, ob der eingegebene Benutzername (checkUserName()) mit zugehörigem Passwort (checkPassword()) vorhanden ist
+     * Weiterleitung zur Startseite, wenn korrekte Eingabe erfolgt ist
+     */
     private void activateLogInButton(){
 
         Button buttonLogIn = findViewById(R.id.button_logIn);
@@ -88,6 +110,11 @@ public class LogIn extends AppCompatActivity{
 
     }
 
+    /**
+     * Funktionalitäten, die ausgeführt werden, wenn der Registrieren-Button gedrückt wird
+     * Hinzufügen eines OnClickListeners
+     * Weiterleitung zur Activity Registrieren
+     */
     public void activateRegButton(){
 
         Button buttonReg = findViewById(R.id.button_reg);

@@ -15,6 +15,9 @@ import com.example.maanjo.sqlite_diabetesapp.R;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
+/**
+ * TableViewer verwaltet die Funktionalitäten der Oberfläche data_overview_table
+ */
 public class TableViewer extends AppCompatActivity {
 
     public static final String LOG_TAG = LogIn.class.getSimpleName();
@@ -24,6 +27,14 @@ public class TableViewer extends AppCompatActivity {
     public String userName;
     public int userId;
 
+    /**
+     * OnCreate-Methode der Klasse TableViewer
+     * Referenziert die Klasse zum Layout und öffnet die Datenbankverbindung
+     * Übernimmt die Daten aus der vorherigen Activity und benutzt diese, um der Tabelle Werte zuzuweisen
+     * Ist zuständig für die Formatierung der Tabelle
+     *
+     * @param savedInstanceState: Gespeicherter Zustand der Activity
+     */
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -45,6 +56,9 @@ public class TableViewer extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    /**
+     * Öffnet Verbindung zur Datenbank, wenn Activity erneut geöffnet wird
+     */
     protected void onResume() {
 
         super.onResume();
@@ -53,6 +67,9 @@ public class TableViewer extends AppCompatActivity {
 
     }
 
+    /**
+     * Schließt bestehende Verbindung zur Datenbank, wenn Activity pausiert wird
+     */
     protected void onPause() {
 
         super.onPause();
@@ -60,9 +77,18 @@ public class TableViewer extends AppCompatActivity {
         dataSource.close();
     }
 
+    //Hinzufügen eines Listeners zu dem BottomNavigationView (Menü)
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        /**
+         * Anonyme onNavigationItemSelected-Listener Klasse
+         * Fügt den einzelnen Menüfeldern eine Funktionalität hinzu
+         * Hier: Navigieren zwischen den Activities Graph, Tabelle und Startseite
+         *
+         * @param item: Ausgewähltes Element des Menüs
+         * @return True oder False, abhängig davon, ob ein Element ausgewählt wurde
+         */
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             Bundle bundle = new Bundle();
